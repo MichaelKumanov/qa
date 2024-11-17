@@ -9,3 +9,4 @@ let shetah1 = 15 * 30;
 console.log(shetah1);
 
 console.log(shetah === shetah1);
+asd
