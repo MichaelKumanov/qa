@@ -1,8 +1,17 @@
 import { expect, test } from "@playwright/test";
-import { describe } from "node:test";
 
-describe("Google Suite", () => {
+test.describe("Google Suite", () => {
   test("Open Google Test", async ({ page }) => {
-    await page.goto("https://www.google.com");
+    const googleURL = "https://www.google.com";
+    const searchBar = page.getByLabel("חיפוש", { exact: true });
+    const playwrightResults = page.getByRole("link", {
+      name: "Playwright: Fast and reliable",
+    });
+
+    await page.goto(googleURL);
+    await searchBar.click();
+    await searchBar.fill("playwhriht");
+    await searchBar.press("Enter");
+    await expect(playwrightResults).toBeVisible();
   });
 });
